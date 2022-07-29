@@ -1,0 +1,23 @@
+import { Component } from '@angular/core';
+import {ProductDataService} from './services/product-data.service'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  private products:any;
+
+ 
+  constructor(private _service:ProductDataService){
+
+  }
+
+  ngOnInit(){
+    this._service.getProducts().subscribe(res=>{
+      this.products = res;
+    });
+  }  
+
+}
